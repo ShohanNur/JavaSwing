@@ -1,6 +1,8 @@
 package JavaSwing;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 
@@ -9,6 +11,7 @@ public class CheckBox extends JFrame{
     private Font f;
     private Container c;
     private ButtonGroup grp;
+    private JLabel label;
     CheckBox(){
         initcomponents();
     }
@@ -43,6 +46,30 @@ public class CheckBox extends JFrame{
         grp.add(check2);
         grp.add(check3);
 
+        label = new JLabel("You have not selected anything!");
+        label.setBounds(100,200,300,30);
+        label.setFont(f);
+        c.add(label);
+
+        Handler handler = new Handler();
+        check2.addActionListener(handler);
+        check3.addActionListener(handler);
+        check1.addActionListener(handler);
+    }
+    class Handler implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(check1.isSelected()){
+                label.setText("You have selected Java");
+            }
+            else if(check2.isSelected()){
+                label.setText("You have selected C++");
+            }
+            else{
+                label.setText("You have selected python");
+            }
+        }
     }
     public static void main(String[] args) {
         CheckBox frame = new CheckBox();
