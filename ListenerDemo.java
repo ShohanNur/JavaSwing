@@ -1,16 +1,15 @@
 package JavaSwing;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 
-public class ListenerDemo extends JFrame implements ActionListener {
+public class ListenerDemo extends JFrame implements ActionListener, KeyListener{
     private Container c;
     private Font f;
+    private JTextField tf;
+    private JTextArea ta;
     private JButton b1,b2,b3;
     ListenerDemo() {
         initcomponents();
@@ -36,6 +35,15 @@ public class ListenerDemo extends JFrame implements ActionListener {
         b3.setBackground(Color.BLUE);
         c.add(b3);
 
+        tf = new JTextField();
+        tf.setBounds(100,350,100,50);
+       // tf.setFont(f);
+        c.add(tf);
+
+        ta = new JTextArea();
+        ta.setBounds(100,450,200,100);
+        //ta.setFont(f);
+        c.add(ta);
         // manual procedure :
      /*   b1.addActionListener(new ActionListener() {
             @Override
@@ -62,6 +70,9 @@ public class ListenerDemo extends JFrame implements ActionListener {
         b1.addActionListener(this);
         b2.addActionListener(this);
         b3.addActionListener(this);
+
+       tf.addKeyListener(this);
+
     }
     public static void main(String[] args) {
         ListenerDemo frame = new ListenerDemo();
@@ -82,5 +93,20 @@ public class ListenerDemo extends JFrame implements ActionListener {
         else{
             c.setBackground(Color.BLUE);
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+         ta.append("Key Typed "+ e.getKeyChar()+"\n");
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        ta.append("Key Pressed "+ e.getKeyChar()+"\n");
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        ta.append("Key Released "+ e.getKeyChar()+"\n");
     }
 }
