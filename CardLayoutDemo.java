@@ -40,7 +40,7 @@ public class CardLayoutDemo  extends JFrame implements ActionListener{
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(50, 50, 800, 600);
-        frame.setTitle("flow Layout Demo!");
+        frame.setTitle("Card Layout Demo!");
     }
 
     @Override
